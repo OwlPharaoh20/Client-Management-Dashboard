@@ -1,3 +1,5 @@
+//This file contains the authentication context and provides functions to log in, log out, and get the current user.
+
 // src/context/AuthContext.jsx
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth } from '../firebaseConfig';

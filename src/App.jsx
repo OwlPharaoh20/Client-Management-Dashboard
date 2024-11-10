@@ -5,6 +5,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute'; // Custom private route
+import ProfilePage from './pages/ProfilePage'; // Import ProfilePage
+
 
 const App = () => {
   return (
@@ -16,16 +18,19 @@ const App = () => {
           <Route
             path="/"
             element={
+              // Wrap the Home component with PrivateRoute to protect it
               <PrivateRoute>
                 <Home />
               </PrivateRoute>
             }
           />
+          <Route path="/profile" element={<ProfilePage />} /> 
           {/* More routes to be added here */}
         </Routes>
       </Router>
     </AuthProvider>
   );
 };
+
 
 export default App;
