@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState('All');
+  
+  // Use navigate to redirect to add-client page
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -37,6 +41,16 @@ const ClientList = () => {
   return (
     <div className="container mx-auto mt-8 p-4">
       <h2 className="text-2xl font-bold mb-6 text-center">Client List</h2>
+
+      {/* Button to Add Client */}
+      <div className="flex justify-end mb-4">
+        <button
+          onClick={() => navigate('/add-client')}
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        >
+          Add Client
+        </button>
+      </div>
 
       {/* Search Bar */}
       <input
