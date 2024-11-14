@@ -28,7 +28,7 @@ const App = () => {
             }
           />
           <Route path="/profile" element={<ProfilePage />} /> 
-          <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} /> // Add a new Route for the dashboard page
+          <Route path="/analytics" element={<PrivateRoute><DashboardPage /></PrivateRoute>} /> // Add a new Route for the dashboard page
           <Route path="/clients" element={<ClientList />} />
           <Route path="/add-client" element={<AddClientForm />} />
           <Route path="/edit-client/:id" element={<EditClientForm />} />
