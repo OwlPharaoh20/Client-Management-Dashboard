@@ -10,6 +10,7 @@ import DashboardPage from './pages/DashboardPage'; // Import DashboardPage
 import AddClientForm from './components/AddClientForm';
 import ClientList from './components/ClientList';
 import EditClientForm from './components/EditClientForm';
+import NotificationsPanel from './components/NotificationsPanel';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/clients" element={<ClientList />} />
           <Route path="/add-client" element={<AddClientForm />} />
           <Route path="/edit-client/:id" element={<EditClientForm />} />
+          <Route path="/notifications" element={<PrivateRoute><NotificationsPanel /></PrivateRoute>} />
           {/* More routes to be added here */}
         </Routes>
       </Router>

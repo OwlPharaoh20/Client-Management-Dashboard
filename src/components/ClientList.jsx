@@ -39,7 +39,7 @@ const ClientList = () => {
   });
 
   return (
-    <div className="container mx-auto mt-8 p-4">
+    <div className="container mx-auto mt-8 p-40">
       <h2 className="text-2xl font-bold mb-6 text-center">Client List</h2>
 
       {/* Button to Add Client */}
