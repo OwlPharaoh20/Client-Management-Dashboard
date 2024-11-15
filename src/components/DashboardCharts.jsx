@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
 
-// Register chart components
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
 
 const DashboardCharts = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay for demo purposes
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
   // Example data for Bar Chart
   const barData = {
     labels: ['January', 'February', 'March', 'April', 'May'],
@@ -42,20 +50,28 @@ const DashboardCharts = () => {
     ],
   };
 
-  return (
-    <div className="container mx-auto mt-8 p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-6 text-center">Client Data Visualization</h2>
+  if (isLoading) {
+    return <div className="text-center mt-8">Loading Charts...</div>;
+  }
 
-      {/* Bar Chart */}
-      <div className="mb-8">
-        <h3 className="text-xl font-semibold mb-4">Clients Joined Over Time</h3>
-        <Bar data={barData} options={{ responsive: true, maintainAspectRatio: false }} height={300} />
+  return (
+    <div className="max-w-4xl mx-auto mt-8 p-8 bg-white rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold mb-8 text-center">Client Data Visualization</h2>
+
+      {/* Bar Chart Section */}
+      <div className="mb-10 p-6 bg-gray-50 rounded-lg shadow-md">
+        <h3 className="text-xl font-semibold mb-6 text-gray-700">Clients Joined Over Time</h3>
+        <div className="h-64">
+          <Bar data={barData} options={{ responsive: true, maintainAspectRatio: true }} />
+        </div>
       </div>
 
-      {/* Pie Chart */}
-      <div>
-        <h3 className="text-xl font-semibold mb-4">Client Status Breakdown</h3>
-        <Pie data={pieData} options={{ responsive: true, maintainAspectRatio: false }} />
+      {/* Pie Chart Section */}
+      <div className="p-6 bg-gray-50 rounded-lg shadow-md">
+        <h3 className="text-xl font-semibold mb-6 text-gray-700">Client Status Breakdown</h3>
+        <div className="h-64">
+          <Pie data={pieData} options={{ responsive: true, maintainAspectRatio: true }} />
+        </div>
       </div>
     </div>
   );
